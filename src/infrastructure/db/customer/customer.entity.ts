@@ -3,7 +3,6 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  BaseEntity,
   PrimaryColumn,
 } from 'typeorm';
 
@@ -13,7 +12,7 @@ export enum DocumentType {
 }
 
 @Entity()
-export class Customer extends BaseEntity {
+export class Customer {
   @PrimaryColumn()
   id: string;
 

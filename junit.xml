@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="15.608">
-  <testsuite name="AppController" errors="0" failures="0" skipped="0" timestamp="2024-04-29T00:07:01" time="15.554" tests="1">
-    <testcase classname="AppController root should return &quot;Hello World!&quot;" name="AppController root should return &quot;Hello World!&quot;" time="0.011">
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="14.815">
+  <testsuite name="AppController" errors="0" failures="0" skipped="0" timestamp="2024-05-19T20:05:27" time="14.767" tests="1">
+    <testcase classname="AppController root should return &quot;Hello World!&quot;" name="AppController root should return &quot;Hello World!&quot;" time="0.01">
     </testcase>
   </testsuite>
 </testsuites>
