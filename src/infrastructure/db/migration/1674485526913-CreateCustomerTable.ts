@@ -1,4 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { Gender } from '../customer/customer.entity';
 
 export class CreateCustomerTable1674485526914 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -8,19 +9,41 @@ export class CreateCustomerTable1674485526914 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'uuid',
             isPrimary: true,
-            isGenerated: false,
+            type: 'uuid',
+            generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
-            name: 'name',
+            name: 'userName',
             type: 'varchar',
             isNullable: false,
+          },
+          {
+            name: 'firstName',
+            type: 'varchar',
+            isNullable: false,
+          },
+          {
+            name: 'lastName',
+            type: 'varchar',
+            isNullable: false,
+          },
+          {
+            name: 'gender',
+            type: 'varchar',
+            isNullable: false,
+            enum: [Gender.FEMALE, Gender.MALE, Gender.OTHER],
           },
           {
             name: 'email',
             type: 'varchar',
             isNullable: false,
+          },
+          {
+            name: 'email_verified',
+            type: 'boolean',
+            default: false,
           },
           {
             name: 'phoneNumber',
@@ -31,17 +54,6 @@ export class CreateCustomerTable1674485526914 implements MigrationInterface {
             name: 'address',
             type: 'jsonb',
             isNullable: true,
-          },
-          {
-            name: 'documentNumber',
-            type: 'int',
-            isNullable: false,
-          },
-          {
-            name: 'documentType',
-            type: 'enum',
-            enum: ['cedula', 'passport'],
-            isNullable: false,
           },
           {
             name: 'metadata',
