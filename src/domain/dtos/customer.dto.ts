@@ -1,5 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsEnum } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsEnum,
+  IsBoolean,
+  IsOptional,
+} from 'class-validator';
+
+export enum Gender {
+  MALE = 'male',
+  FEMALE = 'female',
+  OTHER = 'other',
+}
 
 export class CustomerDTO {
   @ApiProperty({
@@ -7,14 +19,37 @@ export class CustomerDTO {
     required: false,
   })
   @IsString()
+  @IsOptional()
   id?: string;
 
   @ApiProperty({
-    description: 'Customer name',
+    description: 'Customer username',
   })
   @IsNotEmpty()
   @IsString()
-  name: string;
+  userName: string;
+
+  @ApiProperty({
+    description: 'Customer first name',
+  })
+  @IsNotEmpty()
+  @IsString()
+  firstName: string;
+
+  @ApiProperty({
+    description: 'Customer last name',
+  })
+  @IsNotEmpty()
+  @IsString()
+  lastName: string;
+
+  @ApiProperty({
+    description: 'Customer gender',
+    enum: Gender,
+  })
+  @IsNotEmpty()
+  @IsEnum(Gender)
+  gender: Gender;
 
   @ApiProperty({
     description: 'Customer email',
@@ -22,6 +57,14 @@ export class CustomerDTO {
   @IsNotEmpty()
   @IsString()
   email: string;
+
+  @ApiProperty({
+    description: 'Email verified',
+    default: false,
+  })
+  @IsNotEmpty()
+  @IsBoolean()
+  emailVerified: boolean;
 
   @ApiProperty({
     description: 'Customer phone number',
@@ -34,25 +77,13 @@ export class CustomerDTO {
     description: 'Customer address',
     required: false,
   })
-  address?: JSON | null;
-
-  @ApiProperty({
-    description: 'Customer document number',
-  })
-  @IsNotEmpty()
-  documentNumber: number;
-
-  @ApiProperty({
-    description: 'Customer document type',
-    enum: DocumentType,
-  })
-  @IsNotEmpty()
-  @IsEnum(DocumentType)
-  documentType: DocumentType;
+  @IsOptional()
+  address?: object;
 
   @ApiProperty({
     description: 'Customer metadata',
     required: false,
   })
-  metadata?: JSON | null;
+  @IsOptional()
+  metadata?: object;
 }
