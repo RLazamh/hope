@@ -1,6 +1,6 @@
 import { DatabaseService } from '@deuna/tl-shared-nd';
 import { Module } from '@nestjs/common';
-import { CustomerDBService } from './customer/customer-db.service';
+import { CustomerDBService } from './entities/customer/customer-db.service';
 
 @Module({
   providers: [DatabaseService, CustomerDBService],

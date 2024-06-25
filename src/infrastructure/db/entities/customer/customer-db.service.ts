@@ -1,7 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { DatabaseService } from '@deuna/tl-shared-nd';
-import { configMigrate } from '../config/db.orm';
+import { configMigrate } from '../../config/db.orm';
 import { Customer } from './customer.entity';
 
 @Injectable()

@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { Gender } from '../customer/customer.entity';
+import { v4 as uuidv4 } from 'uuid';
+import { Gender } from '../entities/customer/customer.entity';
 
 export class CreateCustomerTable1674485526914 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -9,10 +10,9 @@ export class CreateCustomerTable1674485526914 implements MigrationInterface {
         columns: [
           {
             name: 'id',
+            type: 'varchar',
             isPrimary: true,
-            type: 'uuid',
-            generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()',
+            default: `'${uuidv4()}'`,
           },
           {
             name: 'userName',
